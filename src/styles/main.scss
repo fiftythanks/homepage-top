@@ -1,11 +1,7 @@
 @charset 'UTF-8'; /* To avoid any character encoding issue. */
 
-@forward 'vendors';
 @forward 'base';
 @forward 'layout';
-@forward 'components';
-@forward 'pages';
-@forward 'themes';
 
 /**
  * TABLE OF CONTENTS
