@@ -4,7 +4,6 @@ const config = {
     'stylelint-config-sass-guidelines',
     'stylelint-config-concentric-order',
   ],
-  ignoreFiles: ['!(./src/**/*.{css, scss, sass}'],
 };
 
 module.exports = config;
