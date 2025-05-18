@@ -10,6 +10,10 @@ module.exports = {
   resolve: {
     extensions: ['.mjs', '.js', '.json'],
     mainFiles: ['index'],
+    alias: {
+      Styles: path.resolve(__dirname, 'src/styles/'),
+      Abstracts: path.resolve(__dirname, 'src/styles/abstracts/'),
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
