@@ -3,6 +3,7 @@
 @forward 'base';
 @forward 'blocks';
 @forward 'layout';
+@forward 'Abstracts/variables';
 
 /**
  * TABLE OF CONTENTS
@@ -15,10 +16,14 @@
  * BLOCKS
  * About.....................BEM block `about`.
  * Social-links..............BEM block `social-links`.
+ * Project-card..............BEM block `project-card`.
  * 
  * LAYOUT
  * Page......................BEM block `page` (<body>).
  * Header....................BEM block `header`.
  * Portfolio.................BEM block `portfolio` (<main>).
  * Footer....................BEM block `footer`.
+ * 
+ * Abstracts
+ * Variables.................Application-wide variables.
  */
