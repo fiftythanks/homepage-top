@@ -13,6 +13,7 @@ module.exports = {
     alias: {
       Styles: path.resolve(__dirname, 'src/styles/'),
       Abstracts: path.resolve(__dirname, 'src/styles/abstracts/'),
+      '@*': path.resolve(__dirname, 'src/*'),
     },
   },
   plugins: [
