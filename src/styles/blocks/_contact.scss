@@ -1,0 +1,45 @@
+/*------------------------------------*\
+  #CONTACT
+\*------------------------------------*/
+
+@use 'Abstracts/placeholders';
+
+.contact {
+  --contact-gap: 1.5rem;
+  @extend %flex-col;
+
+  gap: var(--contact-gap);
+  background-color: var(--secondary-bgc);
+  padding: 1rem var(--inline-padding-small) 5rem;
+
+  &__title {
+    @extend %secondary-title;
+
+    align-self: center;
+    color: hsl(0, 0%, 100%);
+  }
+
+  &__text,
+  &__address,
+  &__number,
+  &__email {
+    color: hsl(0, 0%, 100%);
+    font-family: var(--text-font);
+    font-style: normal;
+  }
+
+  &__text {
+    margin-top: calc(-0.5 * var(--contact-gap));
+    font-size: 1.25rem;
+  }
+
+  &__number {
+    margin-top: var(--contact-gap);
+    font-family: var(--text-font);
+  }
+
+  &__social-links {
+    align-self: center;
+    margin-top: var(--contact-gap);
+  }
+}
