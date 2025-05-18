@@ -8,10 +8,9 @@
   @extend %flex-col;
 
   &__title {
+    @extend %secondary-title;
+
     text-align: center;
-    font-family: var(--title-font);
-    font-size: var(--h2);
-    font-weight: 500;
   }
 
   &__text {

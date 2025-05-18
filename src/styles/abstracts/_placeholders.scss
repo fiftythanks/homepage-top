@@ -1,4 +1,12 @@
+@use 'Abstracts/variables';
+
 %flex-col {
   display: flex;
   flex-direction: column;
+}
+
+%secondary-title {
+  font-family: var(--title-font);
+  font-size: var(--h2);
+  font-weight: 400;
 }
