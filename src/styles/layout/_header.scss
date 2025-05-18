@@ -5,3 +5,58 @@
 /**
  * This file contains all styles related to the header of the site/application.
  */
+
+@use 'Abstracts/variables';
+@use 'Abstracts/functions' as fn;
+@use 'Abstracts/placeholders';
+@use 'sass:math';
+
+.header {
+  /**
+   * These calculations are done to make the gradient boundary always lie in
+   * roughly the same place relative to the photo.
+   */
+  --init-photo-width: 420;
+  --init-photo-height: 595;
+  --photo-aspect-ratio: calc(
+    var(--init-photo-width) / var(--init-photo-height)
+  );
+  --photo-width: calc(100vw - 2 * var(--inline-padding-small));
+  --photo-height: calc(var(--photo-width) / var(--photo-aspect-ratio));
+  --upper-padding: 1.5rem;
+  --gradient-boundary: calc(
+    0.83 * (var(--photo-height) + var(--upper-padding))
+  );
+
+  @extend %flex-col;
+  gap: 2rem;
+  background-image: linear-gradient(
+    150deg,
+    var(--secondary-bgc) var(--gradient-boundary),
+    var(--main-bgc) var(--gradient-boundary)
+  );
+  padding: var(--upper-padding) var(--inline-padding-small) 0;
+
+  &__inner {
+    position: relative;
+  }
+
+  &__photo {
+    box-shadow: 0 0 5px 2px hsla(0, 0%, 0%, 0.1);
+    height: 100%;
+  }
+
+  &__title {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding-inline: fn.rem(7);
+    text-shadow: 0 fn.rem(2) fn.rem(2) hsla(0, 0%, 0%, 0.3);
+    line-height: 1.1;
+    color: hsl(0, 0%, 100%);
+    font-family: var(--title-font);
+    font-size: 3rem;
+    font-weight: 400;
+  }
+}

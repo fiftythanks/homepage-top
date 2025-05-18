@@ -1,0 +1,16 @@
+/*------------------------------------*\
+  #SOCIAL-LINKS
+\*------------------------------------*/
+
+.social-links {
+  display: flex;
+  gap: 1.75rem;
+  padding: 0;
+  list-style-type: none;
+
+  &__icon {
+    aspect-ratio: 1 / 1;
+    width: 3rem;
+    height: auto;
+  }
+}

@@ -1,0 +1,27 @@
+/*------------------------------------*\
+  #ABOUT
+\*------------------------------------*/
+
+@use 'Abstracts/placeholders';
+
+.about {
+  @extend %flex-col;
+
+  &__title {
+    text-align: center;
+    font-family: var(--title-font);
+    font-size: var(--h2);
+    font-weight: 500;
+  }
+
+  &__text {
+    color: var(--text-color-main);
+    font-family: var(--text-font);
+    font-size: 1.3rem;
+  }
+
+  &__social-links {
+    align-self: center;
+    margin-top: 1rem;
+  }
+}

@@ -5,3 +5,9 @@
 /**
  * This file contains all global styles applied to the entire page.
  */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}

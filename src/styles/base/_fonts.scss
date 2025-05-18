@@ -1,0 +1,25 @@
+/*------------------------------------*\
+  #FONTS
+\*------------------------------------*/
+
+/* This file contains all @font-face declarations. */
+
+@font-face {
+  font-family: 'Bona Nova';
+  src:
+    local('Bona Nova'),
+    url('/src/assets/fonts/bonanova-regular.woff2') format('woff2'),
+    url('/src/assets/fonts/bonanova-regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bona Nova';
+  src:
+    local('Bona Nova'),
+    url('/src/assets/fonts/bonanova-bold.woff2') format('woff2'),
+    url('/src/assets/fonts/bonanova-bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}

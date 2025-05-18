@@ -1,6 +1,7 @@
 @charset 'UTF-8'; /* To avoid any character encoding issue. */
 
 @forward 'base';
+@forward 'blocks';
 @forward 'layout';
 
 /**
@@ -10,6 +11,10 @@
  * Reset.....................A CSS reset.
  * Fonts.....................`@font-face` declarations.
  * Typography................Typography styles.
+ * 
+ * BLOCKS
+ * About.....................BEM block `about`.
+ * Social-links..............BEM block `social-links`.
  * 
  * LAYOUT
  * Page......................Global page styles.
