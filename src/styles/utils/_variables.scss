@@ -1,1 +1,11 @@
 // This file contains all application-wide Sass variables.
+
+:root {
+  --main-bgc: hsl(0, 0%, 100%);
+  --secondary-bgc: hsl(192, 100%, 40%);
+  --h2: 2.5rem;
+  --text-color-main: hsl(0, 1%, 35%);
+  --title-font: 'Bona Nova', serif;
+  --text-font: 'Ubuntu', sans-serif;
+  --inline-padding-small: 2rem;
+}
