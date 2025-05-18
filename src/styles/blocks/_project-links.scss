@@ -1,17 +1,17 @@
 /*------------------------------------*\
-  #SOCIAL-LINKS
+  #PROJECT-LINKS
 \*------------------------------------*/
 
-.social-links {
+.project-links {
   display: flex;
-  gap: 1.75rem;
+  gap: 1rem;
   padding: 0;
   list-style-type: none;
 
   &__icon {
     aspect-ratio: 1 / 1;
-    width: 3rem;
-    min-width: 48px;
+    width: 2rem;
+    min-width: 32px;
     height: auto;
   }
 }

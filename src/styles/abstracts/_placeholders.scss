@@ -5,6 +5,12 @@
 
 %secondary-title {
   font-family: var(--title-font);
-  font-size: var(--h2);
+  font-size: var(--h2-size);
+  font-weight: 400;
+}
+
+%tertiary-title {
+  font-family: var(--title-font);
+  font-size: var(--h3-size);
   font-weight: 400;
 }

@@ -1,3 +1,23 @@
 /*------------------------------------*\
   #PORTFOLIO
 \*------------------------------------*/
+
+@use 'Abstracts/placeholders';
+
+.portfolio {
+  @extend %flex-col;
+
+  padding: var(--inline-padding-small);
+
+  &__title {
+    @extend %secondary-title;
+
+    align-self: center;
+  }
+
+  &__content {
+    @extend %flex-col;
+
+    gap: 2rem;
+  }
+}
