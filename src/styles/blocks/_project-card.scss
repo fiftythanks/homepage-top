@@ -3,9 +3,11 @@
 \*------------------------------------*/
 
 @use 'Abstracts/placeholders';
+@use 'Abstracts/functions' as fn;
 
 .project-card {
   box-shadow: 2px 5px 10px hsla(0, 0%, 0%, 0.2);
+  max-width: var(--project-card-max-width);
 
   &__screenshot {
     height: calc(7.5 * var(--h2-size));

@@ -3,24 +3,3 @@
 \*------------------------------------*/
 
 @use 'Abstracts/placeholders';
-
-.about {
-  @extend %flex-col;
-
-  &__title {
-    @extend %secondary-title;
-
-    text-align: center;
-  }
-
-  &__text {
-    color: var(--text-color-main);
-    font-family: var(--text-font);
-    font-size: 1.3rem;
-  }
-
-  &__social-links {
-    align-self: center;
-    margin-top: 1rem;
-  }
-}

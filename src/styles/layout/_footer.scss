@@ -5,3 +5,56 @@
 /**
  * This file contains all styles related to the footer of the site/application.
  */
+
+@use 'Abstracts/mixins' as mxn;
+@use 'Abstracts/placeholders';
+
+.footer {
+  @extend %flex-col;
+
+  gap: 5rem;
+  align-items: center;
+  background-color: var(--secondary-bgc);
+  padding: 2rem 1rem 0;
+
+  /* stylelint-disable-next-line order/order */
+  @include mxn.medium-small {
+    /**
+     * 3rem bottom padding is necessary because of the font's internal padding */
+    padding: 2rem var(--padding-inline-medium-small) 3rem;
+  }
+
+  /* stylelint-disable-next-line order/order */
+  @include mxn.medium {
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: space-between;
+  }
+
+  &__image-wrapper {
+    width: 100vw;
+    max-width: 450px;
+
+    /* stylelint-disable-next-line order/order */
+    @include mxn.medium-small {
+      width: 100%;
+    }
+
+    /* stylelint-disable-next-line order/order */
+    @include mxn.medium {
+      /**
+       * To vertically centralize the image 
+       * (footer's top and bottom paddings are different)
+       */
+      margin-top: 1rem;
+      width: auto;
+      max-width: 300px;
+    }
+  }
+
+  &__image {
+    aspect-ratio: 450 / 675;
+    width: 100%;
+    height: auto;
+  }
+}

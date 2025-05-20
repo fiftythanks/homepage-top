@@ -3,21 +3,53 @@
 \*------------------------------------*/
 
 @use 'Abstracts/placeholders';
+@use 'Abstracts/mixins' as mxn;
 
 .portfolio {
   @extend %flex-col;
 
-  padding: var(--inline-padding-small);
+  align-items: center;
+  padding-inline: var(--padding-inline-small);
+
+  /* stylelint-disable-next-line order/order */
+  @include mxn.medium-small {
+    padding-inline: var(--padding-inline-medium-small);
+  }
+
+  @include mxn.medium {
+    padding-inline: var(--padding-inline-medium);
+  }
 
   &__title {
     @extend %secondary-title;
 
     align-self: center;
+    margin-bottom: 1rem;
+
+    /* stylelint-disable-next-line order/order */
+    @include mxn.medium {
+      /** 
+       * To align the title with the project cards.
+       * 
+       * 2.5 rem is the column gap of the portfolio__content element.
+       */
+      width: 100%;
+      max-width: calc(2 * var(--project-card-max-width) + 2.5rem);
+    }
   }
 
   &__content {
     @extend %flex-col;
 
     gap: 2rem;
+    align-items: center;
+
+    /* stylelint-disable-next-line order/order */
+    @include mxn.medium {
+      display: grid;
+      grid-template: 1fr 1fr 1fr / 1fr 1fr;
+      row-gap: 4rem;
+      column-gap: 2.5rem;
+    }
   }
 }

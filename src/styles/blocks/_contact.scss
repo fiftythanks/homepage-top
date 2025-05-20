@@ -3,6 +3,7 @@
 \*------------------------------------*/
 
 @use 'Abstracts/placeholders';
+@use 'Abstracts/mixins' as mxn;
 
 .contact {
   --contact-gap: 1.5rem;
@@ -10,7 +11,13 @@
 
   gap: var(--contact-gap);
   background-color: var(--secondary-bgc);
-  padding: 1rem var(--inline-padding-small) 5rem;
+  // padding: 1rem var(--inline-padding-small) 5rem;
+  max-width: 450px;
+
+  /* stylelint-disable-next-line order/order */
+  @include mxn.medium {
+    padding: 0;
+  }
 
   &__title {
     @extend %secondary-title;

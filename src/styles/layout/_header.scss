@@ -8,9 +8,15 @@
 
 @use 'Abstracts/functions' as fn;
 @use 'Abstracts/placeholders';
+@use 'Abstracts/mixins' as mxn;
 @use 'sass:math';
 
 .header {
+  --social-links-margin-top-medium-small: 2rem;
+  --header-inner-padding-inline-medium: 2rem;
+  --social-links-bottom-offset-medium: 1rem;
+  --upper-padding-small: 1.5rem;
+
   /**
    * These calculations are done to make the gradient boundary always lie in
    * roughly the same place relative to the photo.
@@ -20,33 +26,142 @@
   --photo-aspect-ratio: calc(
     var(--init-photo-width) / var(--init-photo-height)
   );
-  --photo-width: calc(100vw - 2 * var(--inline-padding-small));
+  --photo-width: calc(100vw - 2 * var(--padding-inline-small));
   --photo-height: calc(var(--photo-width) / var(--photo-aspect-ratio));
-  --upper-padding: 1.5rem;
   --gradient-boundary: calc(
-    0.83 * (var(--photo-height) + var(--upper-padding))
+    0.83 * (var(--photo-height) + var(--upper-padding-small))
   );
 
-  @extend %flex-col;
-
-  gap: 2rem;
+  display: flex;
+  justify-content: center;
   background-image: linear-gradient(
     150deg,
     var(--secondary-bgc) var(--gradient-boundary),
     var(--main-bgc) var(--gradient-boundary)
   );
-  padding: var(--upper-padding) var(--inline-padding-small) 0;
+  padding: var(--upper-padding-small) var(--padding-inline-small) 0;
+
+  /* stylelint-disable-next-line order/order */
+  @include mxn.medium-small {
+    /** 
+     * 3rem is the footer's bottom padding.
+     */
+    --upper-padding-medium-small: 3rem;
+
+    /**
+     * These calculations are done to make the gradient boundary always lie in
+     * roughly the same place relative to the photo.
+     */
+    --photo-height: var(--init-photo-height);
+    --gradient-boundary: calc(
+      0.83 * (var(--photo-height) * 1px + (var(--upper-padding-medium-small)))
+    );
+
+    background-image: linear-gradient(
+      150deg,
+      var(--secondary-bgc) var(--gradient-boundary),
+      var(--main-bgc) var(--gradient-boundary)
+    );
+
+    padding-top: var(--upper-padding-medium-small);
+    padding-inline: var(--padding-inline-medium-small);
+  }
+
+  /* stylelint-disable-next-line order/order */
+  @include mxn.medium {
+    --upper-padding-medium: 8rem;
+
+    background-image: linear-gradient(
+      163deg,
+      var(--secondary-bgc) 43%,
+      var(--main-bgc) 43%
+    );
+
+    padding-top: var(--upper-padding-medium);
+    padding-inline: var(--padding-inline-medium);
+  }
 
   &__inner {
+    --header-inner-padding-top-medium: 8rem;
+
+    @extend %flex-col;
+
+    align-items: center;
+    max-width: 500px;
+
+    /* stylelint-disable-next-line order/order */
+    @include mxn.medium {
+      display: block;
+      position: relative;
+      box-shadow: 2px 3px 10px 3px hsla(0, 0%, 0%, 0.125);
+      background-color: hsl(0, 0%, 100%);
+      padding-top: var(--header-inner-padding-top-medium);
+      padding-bottom: calc(
+        var(--social-links-bottom-offset-medium) +
+          var(--social-links-margin-top-medium-small) +
+          var(--social-links-default-width)
+      );
+      padding-inline: var(--header-inner-padding-inline-medium);
+      max-width: 100%;
+    }
+  }
+
+  &__photo-wrapper {
+    --photo-translate-factor: -5rem;
+    --photo-width-medium-unscaled: 30%;
+    --photo-height-medium-unscaled: calc(
+      var(--photo-width-medium-unscaled) / var(--photo-aspect-ratio)
+    );
+
+    /**
+     * `--upper-padding-medium-small` is the same length as the footer's bottom
+     * padding. I want the photo to have the same offset off the top 
+     * of the page.
+     * 
+     * (The formatting is Prettier's, by the way, so don't blame me for it.)
+     * 
+     * PS: it's commented out because I didn't come up with a good
+     * solution for how to work around the fact that the scale factor must be
+     * unitless. I could strip the result of the calculation from its unit with
+     * Sass if the factor were static, but it's dynamic. I'm leaving it here
+     * in chance I get some idea in the future.
+     */
+    /* --photo-height-medium: calc(
+      var(--upper-padding-medium) + var(--header-inner-padding-top-medium) +
+        var(--photo-translate-factor) - var(--upper-padding-medium-small)
+    );
+    --photo-scale-factor: calc(
+      var(--photo-height-medium) / var(--photo-height-medium-unscaled)
+    ); */
+
     position: relative;
+
+    /* stylelint-disable-next-line order/order */
+    @include mxn.medium {
+      position: static;
+      float: left;
+      margin-right: 1.5rem;
+      margin-bottom: -7rem;
+      width: calc(var(--photo-width-medium-unscaled));
+    }
   }
 
   &__photo {
     box-shadow: 0 0 5px 2px hsla(0, 0%, 0%, 0.1);
     height: 100%;
+    aspect-ratio: var(--init-photo-width) / var(--init-photo-height);
+
+    /* stylelint-disable-next-line order/order */
+    @include mxn.medium {
+      transform: scale(1.4) translateY(var(--photo-translate-factor));
+      transform-origin: bottom right;
+      box-shadow: 1px 1px 5px 0 hsla(0, 0%, 0%, 0.4);
+      width: 100%;
+      height: auto;
+    }
   }
 
-  &__title {
+  &__name {
     position: absolute;
     right: 0;
     bottom: 0;
@@ -58,5 +173,51 @@
     font-family: var(--title-font);
     font-size: 3rem;
     font-weight: 400;
+
+    /* stylelint-disable-next-line order/order */
+    @include mxn.medium {
+      top: -1.25em;
+      right: auto;
+      bottom: auto;
+      left: 24%;
+      width: auto;
+      text-shadow: 0 fn.rem(3) fn.rem(2) hsla(0, 0%, 0%, 0.3);
+      white-space: nowrap;
+    }
+  }
+
+  &__about {
+    @extend %secondary-title;
+
+    margin-top: 1em;
+    text-align: center;
+
+    /* stylelint-disable-next-line order/order */
+    @include mxn.medium {
+      margin: 0;
+      white-space: nowrap;
+    }
+  }
+
+  &__text {
+    color: var(--text-color-main);
+    font-family: var(--text-font);
+    font-size: 1.3rem;
+  }
+
+  &__social-links {
+    margin-top: 1rem;
+
+    /* stylelint-disable-next-line order/order */
+    @include mxn.medium-small {
+      margin-top: var(--social-links-margin-top-medium-small);
+    }
+
+    /* stylelint-disable-next-line order/order */
+    @include mxn.medium {
+      position: absolute;
+      right: var(--header-inner-padding-inline-medium);
+      bottom: var(--social-links-bottom-offset-medium);
+    }
   }
 }

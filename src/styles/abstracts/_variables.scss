@@ -4,6 +4,8 @@
 
 /* This file contains all application-wide variables. */
 
+@use 'Abstracts/functions' as fn;
+
 :root {
   --main-bgc: hsl(0, 0%, 100%);
   --secondary-bgc: hsl(192, 100%, 40%);
@@ -12,5 +14,9 @@
   --text-color-main: hsl(0, 1%, 35%);
   --title-font: 'Bona Nova', serif;
   --text-font: 'Noto Sans', sans-serif;
-  --inline-padding-small: 1.25rem;
+  --padding-inline-small: 1.25rem;
+  --padding-inline-medium-small: 2rem;
+  --padding-inline-medium: 5rem;
+  --social-links-default-width: 3rem;
+  --project-card-max-width: #{fn.rem(400)};
 }

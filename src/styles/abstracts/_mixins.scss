@@ -1,1 +1,19 @@
 // This file contains all application-wide Sass mixins.
+
+@mixin medium-small {
+  @media screen and (min-width: 450px) {
+    @content;
+  }
+}
+
+@mixin medium {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin large {
+  @media screen and (min-width: 1024px) {
+    @content;
+  }
+}
