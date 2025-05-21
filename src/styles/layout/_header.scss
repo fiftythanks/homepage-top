@@ -29,13 +29,14 @@
   --photo-width: calc(100vw - 2 * var(--padding-inline-small));
   --photo-height: calc(var(--photo-width) / var(--photo-aspect-ratio));
   --gradient-boundary: calc(
-    0.83 * (var(--photo-height) + var(--upper-padding-small))
+    0.9 * (var(--photo-height) + var(--upper-padding-small))
   );
+  --gradient-angle: 160deg;
 
   display: flex;
   justify-content: center;
   background-image: linear-gradient(
-    150deg,
+    var(--gradient-angle),
     var(--secondary-bgc) var(--gradient-boundary),
     var(--main-bgc) var(--gradient-boundary)
   );
@@ -49,16 +50,60 @@
     --upper-padding-medium-small: 3rem;
 
     /**
-     * These calculations are done to make the gradient boundary always lie in
-     * roughly the same place relative to the photo.
+     * The section is commented out because I didn't come up with a good
+     * solution for how to work around the fact that the `sqrt()` works only 
+     * with unitless values. I'm leaving it here in chance I get some idea in
+     * the future.
      */
-    --photo-height: var(--init-photo-height);
-    --gradient-boundary: calc(
-      0.83 * (var(--photo-height) * 1px + (var(--upper-padding-medium-small)))
+    /**
+     *                *****************************************---*************
+     *                *                                          |            *
+     *                *                                          |            *
+     *                *              *--************************ |            *
+     *                *              * |                       * |            *
+     *                *              * |                       * |            *
+     *                *              * |                       * m            *
+     *                *              * |                       * |            *
+     *                *              * h        PHOTO          * |            *
+     *                *              * |                       * |            *
+     *                *              * |                       * |            *
+     *                *      z       * |                       * |            *
+     *              --×**************×----------------------------            *
+     *              | *           *  * x                       *              *
+     *              | *        *     * |                       *              *
+     *              y *     * d      ×--************************              *
+     *       •      | *  *                                                    *
+     *       •      --×                                                       *
+     *       •     *  *                                                       *
+     *       •   *    *                                                       *
+     *       • *      *                                                       *
+     *       ×  <--------- gradient angle (formed with bullet-point lines)    *
+     *     *   •      *                                                       *
+     *   *       •    *                                                       *
+     *             •  *********************************************************
+     *               •
+     *
+     *
+     * By the law of cosines:
+     * y² = z² + d² - 2zd * cos(180deg - gradient-angle)
+     */
+    /* --z: calc((100vw - var(--init-photo-width) * 1px) / 2);
+    --d: calc(var(--z) / sin(180deg - var(--gradient-angle)));
+    --y-square: calc(
+      pow(var(--z), 2) + pow(var(--d), 2) - 2 * var(--z) * var(--d) *
+        cos(180deg - var(--gradient-angle))
     );
+    --y: calc(sqrt(var(--y-square)));*/
+
+    /* I want h to be 83% of the photo height. */
+    /* --h: calc(0.83 * var(--init-photo-height) * 1px);
+    --m: calc(var(--upper-padding-medium-small) + var(--h));
+    --gradient-boundary: calc(var(--y) + var(--m)); */
+
+    --gradient-boundary: 50%;
 
     background-image: linear-gradient(
-      150deg,
+      var(--gradient-angle),
       var(--secondary-bgc) var(--gradient-boundary),
       var(--main-bgc) var(--gradient-boundary)
     );
@@ -70,11 +115,12 @@
   /* stylelint-disable-next-line order/order */
   @include mxn.medium {
     --upper-padding-medium: 8rem;
+    --gradient-boundary: 55%;
 
     background-image: linear-gradient(
-      163deg,
-      var(--secondary-bgc) 43%,
-      var(--main-bgc) 43%
+      var(--gradient-angle),
+      var(--secondary-bgc) var(--gradient-boundary),
+      var(--main-bgc) var(--gradient-boundary)
     );
 
     padding-top: var(--upper-padding-medium);
