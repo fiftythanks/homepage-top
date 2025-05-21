@@ -30,11 +30,19 @@
     @include mxn.medium {
       /** 
        * To align the title with the project cards.
-       * 
-       * 2.5 rem is the column gap of the portfolio__content element.
        */
       width: 100%;
-      max-width: calc(2 * var(--project-card-max-width) + 2.5rem);
+      max-width: calc(
+        2 * var(--project-card-max-width) + var(--portfolio-column-gap-medium)
+      );
+    }
+
+    @include mxn.large {
+      /* 3 rem is the column gap of the portfolio__content element. */
+      max-width: calc(
+        3 * var(--project-card-max-width) + 2 *
+          var(--portfolio-column-gap-large)
+      );
     }
   }
 
@@ -49,7 +57,12 @@
       display: grid;
       grid-template: 1fr 1fr 1fr / 1fr 1fr;
       row-gap: 4rem;
-      column-gap: 2.5rem;
+      column-gap: var(--portfolio-column-gap-medium);
+    }
+
+    @include mxn.large {
+      grid-template: 1fr 1fr / 1fr 1fr 1fr;
+      column-gap: var(--portfolio-column-gap-large);
     }
   }
 }
